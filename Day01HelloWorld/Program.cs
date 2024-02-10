@@ -18,9 +18,21 @@ namespace Day01HelloWorld
                 string nameStr = Console.ReadLine();
                 Console.Write("What is your age? ");
                 string ageStr = Console.ReadLine();
-                int age = int.Parse(ageStr); // ex FormatException, OverFlowException
+
+                int ageOne = int.Parse(ageStr); // ex FormatException, OverFlowException
+
+                int ageTwo;
+                if (!int.TryParse(ageStr, out ageTwo))
+                {
+                    Console.WriteLine("Error: you must enter an integer number");
+                }
+                else
+                {
+                    Console.WriteLine("Hello {0}, you are {1} y/o", nameStr, ageTwo);
+                }
+                
                 Console.WriteLine("Hello {0}, you are {1} y/o", nameStr, ageStr);
-                string greeting = $"Hello {nameStr}, you are {age} y/o";
+                string greeting = $"Hello {nameStr}, you are {ageOne} y/o";
                 Console.WriteLine(greeting);
                 // Console.WriteLine("Hello {0}, you are {1} y/o", name, age);
                 int nameLen = nameStr.Length;
