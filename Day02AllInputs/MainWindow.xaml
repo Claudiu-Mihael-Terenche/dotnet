@@ -1,0 +1,27 @@
+﻿<Window x:Class="Day02AllInputs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Day02AllInputs"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"/>
+        <Label Content="Age" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="35"/>
+        <Label Content="Pets" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="35"/>
+        <Label Content="Continent of residence" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="134"/>
+        <Label Content="Preferred temp C" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="101"/>
+        <Button Content="Register me" HorizontalAlignment="Left" Margin="130,148,0,0" VerticalAlignment="Top" Width="72"/>
+        <TextBox HorizontalAlignment="Left" Margin="65,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <RadioButton Content="bellow 18" HorizontalAlignment="Left" Margin="59,41,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="18-35" HorizontalAlignment="Left" Margin="141,41,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="36 and up" HorizontalAlignment="Left" Margin="202,41,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="cat" HorizontalAlignment="Left" Margin="59,67,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="dog" HorizontalAlignment="Left" Margin="112,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.208,-0.96"/>
+        <CheckBox Content="other" HorizontalAlignment="Left" Margin="172,67,0,0" VerticalAlignment="Top"/>
+        <Slider HorizontalAlignment="Left" Margin="166,118,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Margin="121,119,0,0" TextWrapping="Wrap" Text="21" VerticalAlignment="Top" Width="23"/>
+
+    </Grid>
+</Window>
