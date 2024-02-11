@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Day02WPFHelloWorld"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="160" Width="410">
     <Grid>
-        
+        <Label Content="What is your name?" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="50" Width="213"/>
+        <TextBox Name="TbxName" HorizontalAlignment="Left" Margin="210,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="190"/>
+        <Button Name="BtnHelloLabel" Content="Say hello with label" HorizontalAlignment="Left" Margin="17,52,0,0" VerticalAlignment="Top" Width="158"/>
+        <Button Name="BtnHelloMessageBox" Content="Say hello with message box" HorizontalAlignment="Left" Margin="210,52,0,0" VerticalAlignment="Top" Width="190"/>
+        <Label Name="LblGreeting" Content="..." HorizontalAlignment="Center" Margin="10,95,0,0" VerticalAlignment="Top" Width="390"/>
+
     </Grid>
 </Window>

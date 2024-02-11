@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,19 +66,46 @@ namespace Day01PeopleListInFile
 
         }
 
-        private static void SaveAllPeopleToFile()
-        {
-            // throw new NotImplementedException();
-        }
-
         private static void FindPersonYoungerThan()
         {
-            throw new NotImplementedException();
+            Console.Write("Enter maximum age: ");
+            if (!int.TryParse(Console.ReadLine(), out int maxAge))
+            {
+                Console.WriteLine("Invalid input");
+                return;
+            }
+            // using a foreach loop with a condition
+            Console.WriteLine("People at that age or younger: ");
+            foreach (Person p in People)
+            {
+                if (p.Age <= maxAge)
+                {
+                    Console.WriteLine(p);
+                }
+            }
+            // using LINQ
+            Console.WriteLine("People at that age or younger (using LINQ): ");
+            var youngerList = People.Where(p => (p.Age <= maxAge)); // Method syntax
+            var youngerList2 = from p in People where p.Age <= maxAge select p; // Query syntax
+            foreach (Person p in youngerList)
+            {
+                Console.WriteLine(p);
+            }
         }
 
         private static void FindPersonByName()
         {
-            throw new NotImplementedException();
+            Console.Write("Enter partial person name: ");
+            string searchStr = Console.ReadLine();
+            var matchesList = People.Where(p => p.Name.Contains(searchStr)).ToList(); // LINQ
+            if (matchesList.Count > 0)
+            {
+                Console.WriteLine("Matches found: ");
+                foreach (Person p in matchesList)
+                {
+                    Console.WriteLine(p);
+                }
+            }
         }
 
         private static void ListAllPersonsInfo()
@@ -115,9 +143,62 @@ namespace Day01PeopleListInFile
             }
         }
 
+        private static void SaveAllPeopleToFile()
+        {
+            try
+            {
+                List<string> linesList = new List<string>();
+                foreach (Person person in People)
+                {
+                    linesList.Add($"{person.Name}; {person.Age}; {person.City}");
+                }
+                File.WriteAllLines(DataFileName, linesList); // ex IOException, SystemException
+            }
+            // catch (Exception ex) when (ex is IOException || ex is SystemException)
+            catch (SystemException ex)
+            {
+                Console.WriteLine("Error writing file: " + ex.Message);
+                throw;
+            }
+        }
+
         private static void ReadAllPeopleFromFile()
         {
-            // throw new NotImplementedException();
+            try
+            {
+                if (!File.Exists(DataFileName))
+                {
+                    Console.WriteLine("Warning: no data file found at " + DataFileName);
+                    return; // it's ok if the file doesn't exist yet
+                }
+                string[] linesArray = File.ReadAllLines(DataFileName); // exIOException, SystemException
+                foreach (string line in linesArray)
+                {
+                    try
+                    {
+                        string[] data = line.Split(';');
+                        if (data.Length != 3)
+                        {
+                            throw new FormatException("Invalid number of items");
+                            // or: Console.WriteLine("Error..."); continue;
+                        }
+                        string name = data[0];
+                        int age = int.Parse(data[1]); // ex FormatException
+                        string city = data[2];
+                        Person person = new Person(name, age, city); // ex ArgumentException
+                    }
+                    catch (Exception ex) when (ex is FormatException || ex is ArgumentException)
+                    {
+                        Console.WriteLine($"Error (skipping line): {ex.Message} in:\n {line}");
+                        throw;
+                    }
+                }
+            }
+            // catch (Exception ex) when (ex is IOException || ex is SystemException)
+            catch (SystemException ex)
+            {
+                Console.WriteLine("Error reading file: " + ex.Message);
+            }
         }
     }
 }
