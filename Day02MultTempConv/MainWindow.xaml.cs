@@ -30,7 +30,6 @@ namespace Day02MultTempConv
         {
             if (string.IsNullOrWhiteSpace(TbxInputName.Text))
             {
-
                 return;
             }
 
@@ -40,52 +39,75 @@ namespace Day02MultTempConv
                 return;
             }
 
-
             double outputTemperature;
-            if (RbnInputCelsius.IsChecked == true && RbnOutputCelsius.IsChecked == true)
+
+            if (RbnInputCelsius.IsChecked == true)
             {
-                outputTemperature = inputTemperature;
+                if (inputTemperature < -273.15)
+                {
+                    MessageBox.Show("Invalid conversion! Temperature cannot be lower than -273.15°C (ABSOLUTE ZERO)");
+                    return;
+                }
+
+                if (RbnOutputCelsius.IsChecked == true)
+                {
+                    outputTemperature = inputTemperature;
+                }
+                else if (RbnOutputFahrenheit.IsChecked == true)
+                {
+                    outputTemperature = Math.Round((inputTemperature * 9 / 5) + 32, 2);
+                }
+                else // RbnOutputKelvin.IsChecked == true
+                {
+                    outputTemperature = inputTemperature + 273.15;
+                }
             }
-            else if (RbnInputCelsius.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
+            else if (RbnInputFahrenheit.IsChecked == true)
             {
-                outputTemperature = Math.Round((inputTemperature * 9 / 5) + 32, 2);
+                if (inputTemperature < -459.67)
+                {
+                    MessageBox.Show("Invalid conversion! Temperature cannot be lower than -459.67°F (ABSOLUTE ZERO)");
+                    return;
+                }
+
+                if (RbnOutputCelsius.IsChecked == true)
+                {
+                    outputTemperature = Math.Round((inputTemperature - 32) * 5 / 9, 2);
+                }
+                else if (RbnOutputFahrenheit.IsChecked == true)
+                {
+                    outputTemperature = inputTemperature;
+                }
+                else // RbnOutputKelvin.IsChecked == true
+                {
+                    outputTemperature = Math.Round((inputTemperature - 32) * 5 / 9 + 273.15, 2);
+                }
             }
-            else if (RbnInputCelsius.IsChecked == true && RbnOutputKelvin.IsChecked == true)
+            else // RbnInputKelvin.IsChecked == true
             {
-                outputTemperature = inputTemperature + 273.15;
-            }
-            else if (RbnInputFahrenheit.IsChecked == true && RbnOutputCelsius.IsChecked == true)
-            {
-                outputTemperature = Math.Round((inputTemperature - 32) * 5 / 9, 2);
-            }
-            else if (RbnInputFahrenheit.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
-            {
-                outputTemperature = inputTemperature;
-            }
-            else if (RbnInputFahrenheit.IsChecked == true && RbnOutputKelvin.IsChecked == true)
-            {
-                outputTemperature = Math.Round((inputTemperature - 32) * 5 / 9 + 273.15, 2);
-            }
-            else if (RbnInputKelvin.IsChecked == true && RbnOutputCelsius.IsChecked == true)
-            {
-                outputTemperature = inputTemperature - 273.15;
-            }
-            else if (RbnInputKelvin.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
-            {
-                outputTemperature = Math.Round((inputTemperature - 273.15) * 9 / 5 + 32, 2);
-            }
-            else if (RbnInputKelvin.IsChecked == true && RbnOutputKelvin.IsChecked == true)
-            {
-                outputTemperature = inputTemperature;
-            }
-            else
-            {
-                MessageBox.Show("Invalid conversion");
-                return;
+                if (inputTemperature < 0)
+                {
+                    MessageBox.Show("Invalid conversion! Temperature cannot be lower than 0 Kelvin (ABSOLUTE ZERO)");
+                    return;
+                }
+
+                if (RbnOutputCelsius.IsChecked == true)
+                {
+                    outputTemperature = inputTemperature - 273.15;
+                }
+                else if (RbnOutputFahrenheit.IsChecked == true)
+                {
+                    outputTemperature = Math.Round((inputTemperature - 273.15) * 9 / 5 + 32, 2);
+                }
+                else // RbnOutputKelvin.IsChecked == true
+                {
+                    outputTemperature = inputTemperature;
+                }
             }
 
             TbxOutputName.Text = outputTemperature.ToString();
         }
+
 
         private void RbnInputCelsius_Checked(object sender, RoutedEventArgs e)
         {
