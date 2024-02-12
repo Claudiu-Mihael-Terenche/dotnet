@@ -15,10 +15,10 @@
         <Label Content="Continent of residence" HorizontalAlignment="Left" Margin="20,88,0,0" VerticalAlignment="Top"/>
         <Label Content="Preferred temp C" HorizontalAlignment="Left" Margin="20,114,0,0" VerticalAlignment="Top"/>
         <Button Content="Register me" HorizontalAlignment="Center" Margin="0,147,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
-        <RadioButton x:Name="RbnBelow18Age" Content="below 18" HorizontalAlignment="Left" Margin="68,42,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="RbnBelow18Age" Content="below 18" HorizontalAlignment="Left" Margin="68,42,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <RadioButton x:Name="Rbn18To35Age" Content="18-35" HorizontalAlignment="Left" Margin="165,42,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="Rbn36UpAge" Content="36 and up" HorizontalAlignment="Left" Margin="255,42,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="CbxCat" Content="cat" HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CbxRaccoon" Content="raccoon" HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="CbxDog" Content="dog" HorizontalAlignment="Left" Margin="154,68,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="CbxOther" Content="other" HorizontalAlignment="Left" Margin="242,68,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="CbxContinentNames" HorizontalAlignment="Left" Margin="158,92,0,0" VerticalAlignment="Top" Width="101">

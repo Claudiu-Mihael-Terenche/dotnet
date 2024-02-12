@@ -150,9 +150,9 @@ namespace Day02AllInputs
 
                 // Get pets
                 StringBuilder pets = new StringBuilder();
-                if (CbxCat.IsChecked == true)
+                if (CbxRaccoon.IsChecked == true)
                 {
-                    pets.Append("cat, ");
+                    pets.Append("raccoon, ");
                 }
                 if (CbxDog.IsChecked == true)
                 {
