@@ -4,21 +4,28 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Day02MultTempConv"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="350">
+        mc:Ignorable="d" ResizeMode="NoResize"
+        Title="Temperature Converter" Height="278" Width="467">
     <Grid>
-        <Label Content="Input" HorizontalAlignment="Left" Margin="80,14,0,0" VerticalAlignment="Top"/>
-        <Label Content="Output" HorizontalAlignment="Left" Margin="75,242,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.404,-4.02"/>
-        <Label Content="Input Scale" HorizontalAlignment="Left" Margin="55,93,0,0" VerticalAlignment="Top"/>
-        <Label Content="Output Scale" HorizontalAlignment="Left" Margin="197,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.65,-0.684" Height="28"/>
-        <TextBox x:Name="TbxInput" HorizontalAlignment="Left" Margin="140,18,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top" Width="46" RenderTransformOrigin="0.146,0.737"/>
-        <TextBox x:Name="TbxOutput" HorizontalAlignment="Left" Margin="140,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70"/>
-        <RadioButton x:Name="RbnInputCelsius" GroupName="Input" Content="Celsius" HorizontalAlignment="Left" Margin="55,140,0,0" VerticalAlignment="Top" IsChecked="True" Checked="RbnInputCelsius_Checked" />
-        <RadioButton x:Name="RbnInputFahrenheit" GroupName="Input" Content="Fahrenheit" HorizontalAlignment="Left" Margin="55,181,0,0" VerticalAlignment="Top"/>
-        <RadioButton x:Name="RbnInputKelvin" GroupName="Input" Content="Kelvin" HorizontalAlignment="Left" Margin="55,217,0,0" VerticalAlignment="Top" />
-        <RadioButton x:Name="RbnOutputCelsius" GroupName="Output" Content="Celsius" HorizontalAlignment="Left" Margin="199,143,0,0" VerticalAlignment="Top" Height="17"/>
-        <RadioButton x:Name="RbnOutputFahrenheit" GroupName="Output" Content="Fahrenheit" HorizontalAlignment="Left" Margin="199,184,0,0" VerticalAlignment="Top" Height="16" IsChecked="True" Checked="RbnOutputFahrenheit_Checked"/>
-        <RadioButton x:Name="RbnOutputKelvin" GroupName="Output" Content="Kelvin" HorizontalAlignment="Left" Margin="199,213,0,0" VerticalAlignment="Top" Height="17" RenderTransformOrigin="0.2,0.296"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="118*"/>
+            <ColumnDefinition Width="349*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="40" Height="49" Grid.ColumnSpan="2" Margin="114,0,0,0">
+            Temperature
+        </TextBlock>
+        <Label Content="Input" HorizontalAlignment="Left" Margin="26,58,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.924,0.425" Grid.Column="1"/>
+        <TextBox Name="TbxInputName" HorizontalAlignment="Left" Margin="71,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" Grid.Column="1"/>
+        <Label Content="Input Scale" HorizontalAlignment="Left" Margin="25,81,0,0" VerticalAlignment="Top" Width="105" Grid.ColumnSpan="2"/>
+        <Label Content="Output Scale" HorizontalAlignment="Left" Margin="218,81,0,0" VerticalAlignment="Top" Width="105" Grid.Column="1"/>
+        <RadioButton GroupName="RbnInput" Name="RbnInputCelsius" Content="Celsius" IsChecked="True" HorizontalAlignment="Left" Margin="35,112,0,0" VerticalAlignment="Top" Checked="RbnInputCelsius_Checked"/>
+        <RadioButton GroupName="RbnInput" Name="RbnInputFahrenheit" Content="Fahrenheit" HorizontalAlignment="Left" Margin="35,134,0,0" VerticalAlignment="Top" Checked="RbnInputFahrenheit_Checked"/>
+        <RadioButton GroupName="RbnInput" Name="RbnInputKelvin" Content="Kelvin" HorizontalAlignment="Left" Margin="35,156,0,0" VerticalAlignment="Top" Checked="RbnInputKelvin_Checked"/>
+        <RadioButton GroupName="RbnOutput" Name="RbnOutputCelsius" Content="Celsius" HorizontalAlignment="Left" Margin="228,112,0,0" VerticalAlignment="Top" Grid.Column="1" Checked="RbnOutputCelsius_Checked"/>
+        <RadioButton GroupName="RbnOutput" Name="RbnOutputFahrenheit" Content="Fahrenheit" IsChecked="True" HorizontalAlignment="Left" Margin="228,134,0,0" VerticalAlignment="Top" Grid.Column="1" Checked="RbnOutputFahrenheit_Checked"/>
+        <RadioButton GroupName="RbnOutput" Name="RbnOutputKelvin" Content="Kelvin" HorizontalAlignment="Left" Margin="228,156,0,0" VerticalAlignment="Top" Grid.Column="1" Checked="RbnOutputKelvin_Checked"/>
+        <Label  Content="Output" HorizontalAlignment="Left" Margin="22,184,0,0" VerticalAlignment="Top" Width="58" Grid.Column="1"/>
+        <TextBox Name="TbxOutputName" HorizontalAlignment="Left" Margin="71,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="22" Grid.Column="1"/>
 
     </Grid>
 </Window>

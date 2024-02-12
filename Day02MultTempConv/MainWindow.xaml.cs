@@ -20,61 +20,101 @@ namespace Day02MultTempConv
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void TempConv()
-
+        private void ConvertTemperature()
         {
-            if (string.IsNullOrEmpty(TbxInput.Text)){ return;}
-            if (!double.TryParse(TbxInput.Text, out double inputTemperature))
+            if (string.IsNullOrWhiteSpace(TbxInputName.Text))
             {
-                MessageBox.Show("Invalid input temperature");
-                
+
                 return;
             }
-            
 
-
-            if (RbnInputCelsius.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
+            if (!double.TryParse(TbxInputName.Text, out double inputTemperature))
             {
-                TbxOutput.Text = (inputTemperature + 273).ToString();
-            } else if (RbnInputCelsius.IsChecked ==true  &&)
-            /*
-             if (string.IsNullOrEmpty(TbxInput.Text)){ return;}
-               if (!double.TryParse(TbxInput.Text, out double inputTemperature))
-               {
-                   MessageBox.Show("Invalid input temperature");
-                   
-                   return;
-               }
-               if ( inputTemperature < -273.15) { MessageBox.Show("Temperature cannot be smaller than 0 Kelvin"); }
-               
-               
-               if (RbnInputCelsius.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
-               {
-                   TbxOutput.Text = (inputTemperature + 273).ToString();
-               } else if (R)
-             */
-        }
+                MessageBox.Show("Invalid input temperature");
+                return;
+            }
 
-        
 
-        private void RbnOutputFahrenheit_Checked(object sender, RoutedEventArgs e)
-        {
-            TempConv();
+            double outputTemperature;
+            if (RbnInputCelsius.IsChecked == true && RbnOutputCelsius.IsChecked == true)
+            {
+                outputTemperature = inputTemperature;
+            }
+            else if (RbnInputCelsius.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
+            {
+                outputTemperature = Math.Round((inputTemperature * 9 / 5) + 32, 2);
+            }
+            else if (RbnInputCelsius.IsChecked == true && RbnOutputKelvin.IsChecked == true)
+            {
+                outputTemperature = inputTemperature + 273.15;
+            }
+            else if (RbnInputFahrenheit.IsChecked == true && RbnOutputCelsius.IsChecked == true)
+            {
+                outputTemperature = Math.Round((inputTemperature - 32) * 5 / 9, 2);
+            }
+            else if (RbnInputFahrenheit.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
+            {
+                outputTemperature = inputTemperature;
+            }
+            else if (RbnInputFahrenheit.IsChecked == true && RbnOutputKelvin.IsChecked == true)
+            {
+                outputTemperature = Math.Round((inputTemperature - 32) * 5 / 9 + 273.15, 2);
+            }
+            else if (RbnInputKelvin.IsChecked == true && RbnOutputCelsius.IsChecked == true)
+            {
+                outputTemperature = inputTemperature - 273.15;
+            }
+            else if (RbnInputKelvin.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
+            {
+                outputTemperature = Math.Round((inputTemperature - 273.15) * 9 / 5 + 32, 2);
+            }
+            else if (RbnInputKelvin.IsChecked == true && RbnOutputKelvin.IsChecked == true)
+            {
+                outputTemperature = inputTemperature;
+            }
+            else
+            {
+                MessageBox.Show("Invalid conversion");
+                return;
+            }
+
+            TbxOutputName.Text = outputTemperature.ToString();
         }
 
         private void RbnInputCelsius_Checked(object sender, RoutedEventArgs e)
         {
-            TempConv();
+            ConvertTemperature();
+        }
+
+        private void RbnInputFahrenheit_Checked(object sender, RoutedEventArgs e)
+        {
+            ConvertTemperature();
+        }
+
+        private void RbnInputKelvin_Checked(object sender, RoutedEventArgs e)
+        {
+            ConvertTemperature();
+        }
+
+        private void RbnOutputCelsius_Checked(object sender, RoutedEventArgs e)
+        {
+            ConvertTemperature();
+        }
+
+        private void RbnOutputFahrenheit_Checked(object sender, RoutedEventArgs e)
+        {
+            ConvertTemperature();
         }
 
         private void RbnOutputKelvin_Checked(object sender, RoutedEventArgs e)
         {
-            TempConv();
+            ConvertTemperature();
         }
     }
 }
