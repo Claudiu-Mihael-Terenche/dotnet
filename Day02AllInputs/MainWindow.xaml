@@ -5,23 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Day02AllInputs"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Label Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" Height="25"/>
-        <Label Content="Age" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="35"/>
-        <Label Content="Pets" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top" Width="35"/>
-        <Label Content="Continent of residence" HorizontalAlignment="Left" Margin="10,88,0,0" VerticalAlignment="Top" Width="134"/>
-        <Label Content="Preferred temp C" HorizontalAlignment="Left" Margin="10,114,0,0" VerticalAlignment="Top" Width="101"/>
-        <Button Content="Register me" HorizontalAlignment="Left" Margin="130,148,0,0" VerticalAlignment="Top" Width="72"/>
-        <TextBox HorizontalAlignment="Left" Margin="65,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <RadioButton Content="bellow 18" HorizontalAlignment="Left" Margin="59,41,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="18-35" HorizontalAlignment="Left" Margin="141,41,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="36 and up" HorizontalAlignment="Left" Margin="202,41,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="cat" HorizontalAlignment="Left" Margin="59,67,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="dog" HorizontalAlignment="Left" Margin="112,67,0,0" VerticalAlignment="Top" RenderTransformOrigin="-5.208,-0.96"/>
-        <CheckBox Content="other" HorizontalAlignment="Left" Margin="172,67,0,0" VerticalAlignment="Top"/>
-        <Slider HorizontalAlignment="Left" Margin="166,118,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="121,119,0,0" TextWrapping="Wrap" Text="21" VerticalAlignment="Top" Width="23"/>
+        Title="Register" Height="423" Width="500">
+    <Grid >
+
+        <Label Content="Name" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="56"/>
+        <TextBox Name="TbxName" HorizontalAlignment="Left" Margin="70,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Age" HorizontalAlignment="Left" Margin="20,36,0,0" VerticalAlignment="Top" Width="56"/>
+        <Label Content="Pets" HorizontalAlignment="Left" Margin="20,62,0,0" VerticalAlignment="Top"/>
+        <Label Content="Continent of residence" HorizontalAlignment="Left" Margin="20,88,0,0" VerticalAlignment="Top"/>
+        <Label Content="Preferred temp C" HorizontalAlignment="Left" Margin="20,114,0,0" VerticalAlignment="Top"/>
+        <Button Content="Register me" HorizontalAlignment="Center" Margin="0,147,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click"/>
+        <RadioButton x:Name="RbnBelow18Age" Content="below 18" HorizontalAlignment="Left" Margin="68,42,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Rbn18To35Age" Content="18-35" HorizontalAlignment="Left" Margin="165,42,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="Rbn36UpAge" Content="36 and up" HorizontalAlignment="Left" Margin="255,42,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CbxCat" Content="cat" HorizontalAlignment="Left" Margin="68,68,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CbxDog" Content="dog" HorizontalAlignment="Left" Margin="154,68,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CbxOther" Content="other" HorizontalAlignment="Left" Margin="242,68,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="CbxContinentNames" HorizontalAlignment="Left" Margin="158,92,0,0" VerticalAlignment="Top" Width="101">
+
+        </ComboBox>
+
+        <Slider x:Name="SldrTemp" Value="{Binding SelectedItem.Value, Mode=TwoWay}" HorizontalAlignment="Left" Margin="150,122,0,0" VerticalAlignment="Top" Width="190" Maximum="50" />
+        <TextBox Name="TbxSlider" Text="{Binding Path=Value, ElementName=SldrTemp, StringFormat={}{0:N2}}" HorizontalAlignment="Left" Margin="345,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45"/>
+        <ListView x:Name="LsvPeople" HorizontalAlignment="Center" Height="165" Margin="0,197,0,0" VerticalAlignment="Top" Width="400"/>
+        <Button Content="List Registered Data" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="116" Click="Button_Click_1"/>
+
+
+
 
     </Grid>
 </Window>
+

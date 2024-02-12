@@ -24,5 +24,57 @@ namespace Day02MultTempConv
         {
             InitializeComponent();
         }
+
+        private void TempConv()
+
+        {
+            if (string.IsNullOrEmpty(TbxInput.Text)){ return;}
+            if (!double.TryParse(TbxInput.Text, out double inputTemperature))
+            {
+                MessageBox.Show("Invalid input temperature");
+                
+                return;
+            }
+            
+
+
+            if (RbnInputCelsius.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
+            {
+                TbxOutput.Text = (inputTemperature + 273).ToString();
+            } else if (RbnInputCelsius.IsChecked ==true  &&)
+            /*
+             if (string.IsNullOrEmpty(TbxInput.Text)){ return;}
+               if (!double.TryParse(TbxInput.Text, out double inputTemperature))
+               {
+                   MessageBox.Show("Invalid input temperature");
+                   
+                   return;
+               }
+               if ( inputTemperature < -273.15) { MessageBox.Show("Temperature cannot be smaller than 0 Kelvin"); }
+               
+               
+               if (RbnInputCelsius.IsChecked == true && RbnOutputFahrenheit.IsChecked == true)
+               {
+                   TbxOutput.Text = (inputTemperature + 273).ToString();
+               } else if (R)
+             */
+        }
+
+        
+
+        private void RbnOutputFahrenheit_Checked(object sender, RoutedEventArgs e)
+        {
+            TempConv();
+        }
+
+        private void RbnInputCelsius_Checked(object sender, RoutedEventArgs e)
+        {
+            TempConv();
+        }
+
+        private void RbnOutputKelvin_Checked(object sender, RoutedEventArgs e)
+        {
+            TempConv();
+        }
     }
 }
